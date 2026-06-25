@@ -1,0 +1,39 @@
+name: Aggregate Portfolios and Deploy
+
+on:
+  schedule:
+    - cron: '0 3,15 * * *' 
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout C3 Repository
+        uses: actions/checkout@v4
+
+      - name: Clean Up member Directory
+        run: |
+          rm -rf member
+          mkdir -p member
+
+      - name: Clone member repositories
+        run: |
+          while IFS= read -r repo || [ -n "$repo" ]; do
+            [[ -z "$repo" || "$repo" =~ ^# ]] && continue
+            
+            username=$(echo "$repo" | cut -d'/' -f1)
+            echo "Cloning $repo into members/$username..."
+            git clone --depth 1 "https://github.com/${repo}.git" "members/${username}"
+            
+            rm -rf "members/${username}/.git"
+          done < members.txt
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: .
+          branch: gh-pages
