@@ -17,8 +17,8 @@ jobs:
 
       - name: Clean Up member Directory
         run: |
-          rm -rf member
-          mkdir -p member
+          rm -rf members
+          mkdir -p members
 
       - name: Clone member repositories
         run: |
