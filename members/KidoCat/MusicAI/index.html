@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <link rel="stylesheet" href="../style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kido.cat | Portfolio</title>
+</head>
+<body>
+
+ <!-- Header -->
+<header>
+    <div class="container nav-container">
+        <a href="../index.html" ><img src="../kidocatlogo.png" alt="kidocat" class="logo2"></a>
+        <ul class="nav-links">
+            <li><a href="../index.html#home">Home</a></li>
+            <li><a href="../index.html#projects">Projects</a></li>
+            <li><a href="../index.html#about">About</a></li>
+        </ul>
+    </div>
+</header>
+    
+<!-- Hero Section -->
+    <section id="home" class="projecttittle">
+        <div class="container">
+            <h1>MusicAI</h1>
+            <p>音楽AIプロジェクトの紹介</p>
+        </div>
+    </section>
+
+    <!-- 中央寄せ用のクラスを付与した画像 -->
+    <img src="../music.png" alt="音楽の画像" class="center-image2">
+
+    <section id="contents">
+        <div class="container">
+            <h2 class="section-title">Contents</h2>
+            <p class="section-center">このプロジェクトは、音声を分析して感情を検出することで、より自然な音楽を作成するAI技術を活用しています。</p>
+            <p class="section-center">作成した音楽はダウンロードしていつでも聞くことができます。</p>
+            </div>
+    </section>
+
+    <section id="API">
+        <div class="container">
+            <h2 class="section-title">API Documentation</h2>
+            <div class="projects-grid">
+                
+                <!-- API 1 -->
+                <a href="https://acp.amivoice.com/amivoice_api/" class="card">
+                    <div><img src="../AmiVoiceAPI.png" alt="AmiVoice" class="card-img"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">AmiVoice API</h3>
+                        <p class="card-desc">音声を分析して言葉と感情を検出</p>
+                    </div>
+                </a>
+
+                <!-- API 2 -->
+                <a href="https://ai.google.dev/gemini-api/docs?hl=ja" class="card">
+                    <div><img src="../Gemini.png" alt="Gemini" class="card-img"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Gemini API</h3>
+                        <p class="card-desc">検出した音声をプロンプトに変換</p>
+                    </div>
+                </a>
+
+                <!-- API 3 -->
+                <a href="https://www.udio.com/ai" class="card">
+                    <div><img src="../Udiologo.png" alt="Udio" class="card-img"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Udio</h3>
+                        <p class="card-desc">音楽を作成</p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section id="video">
+        <div class="container">
+            <h2 class="section-title">Video</h2>
+            <p class="section-center">紹介動画</p>
+            <a href="https://youtu.be/LLht5LdMhkc?si=QqB4W_c4CtqVabst" target="_blank">
+                <img src="../samne.png" alt="ビデオサムネイル" class="center-image2">
+            </a>
+        </div>
+    </section>
+    <section id="details">
+        <div class="container">
+            <h2 class="section-title">How to work</h2>
+            <p class="section-center">1.AIが録音した音声を分析し、感情を検出します(AmiVoice API)</p>
+            <img src="../AmiVoice.png" alt="録音の画像" class="center-image2">
+            <p class="section-center">2. 分析した結果をプロンプトに変換します(Gemini API)</p>
+            <img src="../GeminiAPI.png" alt="分析の画像" class="center-image2">
+            <p class="section-center">3. 検出した感情に基づいて、オリジナルの音楽を作成します(Udio AI)</p>
+            <img src="../Udio.png" alt="プロンプトの画像" class="center-image2">
+            <p class="section-center">4. 作成された音楽はダウンロードして聞くことができます。</p>
+            <img src="../QR.png" alt="音楽の画像" class="center-image2">
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 kidocat. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

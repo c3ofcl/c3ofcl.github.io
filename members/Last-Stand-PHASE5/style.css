@@ -1,0 +1,276 @@
+html {
+    scroll-behavior: smooth;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: "Segoe UI", sans-serif;
+    background:#0f172a;
+    color:#e2e8f0;
+    line-height:1.6;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+img{
+    width:100%;
+    display:block;
+}
+
+.container{
+    width:min(1100px, 90%);
+    margin:auto;
+}
+
+header{
+    position:sticky;
+    top:0;
+    backdrop-filter:blur(10px);
+    background:rgba(15,23,42,0.7);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    z-index:100;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:1rem 0;
+}
+
+.logo{
+    font-size:1.4rem;
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+.nav-links{
+    display:flex;
+    gap:1.5rem;
+}
+
+.nav-links a{
+    color:#cbd5e1;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:#38bdf8;
+}
+
+.hero{
+    min-height:90vh;
+    display:flex;
+    align-items:center;
+}
+
+.hero-content{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:3rem;
+    align-items:center;
+}
+
+.hero-text h1{
+    font-size:clamp(2.5rem, 6vw, 5rem);
+    line-height:1.1;
+    margin-bottom:1rem;
+}
+
+.hero-text p{
+    color:#94a3b8;
+    margin-bottom:2rem;
+    max-width:500px;
+}
+
+.btn{
+    display:inline-block;
+    padding:0.9rem 1.6rem;
+    background:#38bdf8;
+    color:#0f172a;
+    border-radius:999px;
+    font-weight:700;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    background:#7dd3fc;
+}
+
+.hero-card{
+    background:linear-gradient(
+        145deg,
+        rgba(56,189,248,0.15),
+        rgba(255,255,255,0.03)
+    );
+    border:1px solid rgba(255,255,255,0.08);
+    padding:2rem;
+    border-radius:24px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.3);
+}
+
+.hero-card h3{
+    margin-bottom:1rem;
+    font-size:1.5rem;
+}
+
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.8rem;
+    margin-top:1.2rem;
+}
+
+.skill{
+    background:rgba(255,255,255,0.06);
+    padding:0.5rem 1rem;
+    border-radius:999px;
+    font-size:0.9rem;
+}
+
+section{
+    padding:6rem 0;
+}
+
+.section-title{
+    font-size:2rem;
+    margin-bottom:2rem;
+}
+
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    gap:2rem;
+}
+
+.project-card{
+    background:#111c34;
+    border-radius:20px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,0.06);
+    transition:0.3s;
+}
+
+.project-card:hover{
+    transform:translateY(-6px);
+}
+
+.project-image{
+    height:180px;
+    background:linear-gradient(
+        135deg,
+        #38bdf8,
+        #6366f1
+    );
+}
+
+/* --- CLUNKY TANKY専用のスタイルを追加 --- */
+.clunky-tanky-image {
+    /* 1. グラデーション背景を、実際の画像に置き換える */
+    background-image: url("CLUNKY_TANKY_Screenshot.png");
+
+    /* 2. 画像のサイズを調整。ここがポイント！ */
+    /* contain: 全体が見えるように縮小 */
+    /* cover: 枠を埋めるように拡大（トリミング） */
+    /* 今回は「デカいので一部表示」したい、かつ下端中央基準なので、
+       containを指定して枠内に収めつつ、後述のpositionで基準を決めます */
+    background-size: contain;
+
+    /* 3. 画像の繰り返しをオフ */
+    background-repeat: no-repeat;
+
+    /* 4. これがUnityのAnchor（下端中央）＋Pivot（下端中央）の指定！ */
+    /* 基準点を「横方向の中央、縦方向の下端」に固定します。
+       これにより、画像の下端中央が、180pxの高さの枠の「底辺中央」にピタッと合います。
+       もし画像が枠より横に長くても、中央を基準に左右がはみ出します（overflow:hiddenで消える）。 */
+    background-position: center bottom;
+}
+
+/* --- tgw-comfy-orchestrator専用のスタイルを追加 --- */
+.tgw-comfy-orchestrator-image {
+    /* 1. グラデーション背景を、実際の画像に置き換える */
+    background-image: url("TGW-Comfy_Orchestrator.png");
+
+    /* 2. 画像のサイズを調整。ここがポイント！ */
+    /* contain: 全体が見えるように縮小 */
+    /* cover: 枠を埋めるように拡大（トリミング） */
+    /* 今回は「デカいので一部表示」したい、かつ下端中央基準なので、
+       containを指定して枠内に収めつつ、後述のpositionで基準を決めます */
+    background-size: contain;
+
+    /* 3. 画像の繰り返しをオフ */
+    background-repeat: no-repeat;
+
+    /* 4. これがUnityのAnchor（下端中央）＋Pivot（下端中央）の指定！ */
+    /* 基準点を「横方向の中央、縦方向の下端」に固定します。
+       これにより、画像の下端中央が、180pxの高さの枠の「底辺中央」にピタッと合います。
+       もし画像が枠より横に長くても、中央を基準に左右がはみ出します（overflow:hiddenで消える）。 */
+    background-position: center bottom;
+}
+
+
+.project-content{
+    padding:1.5rem;
+}
+
+.project-content h3{
+    margin-bottom:0.8rem;
+}
+
+.project-content p{
+    color:#94a3b8;
+    font-size:0.95rem;
+}
+
+.about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:3rem;
+    align-items:center;
+}
+
+.about-box{
+    background:#111c34;
+    padding:2rem;
+    border-radius:24px;
+    border:1px solid rgba(255,255,255,0.06);
+    width: max-content;
+    margin-left: auto;
+}
+
+.about-box p{
+    font-size:1.5rem;
+}
+
+footer{
+    border-top:1px solid rgba(255,255,255,0.08);
+    padding:2rem 0;
+    text-align:center;
+    color:#94a3b8;
+}
+
+@media(max-width:768px){
+
+    .hero-content,
+    .about{
+        grid-template-columns:1fr;
+    }
+
+    .nav-links{
+        gap:1rem;
+        font-size:0.9rem;
+    }
+
+    .hero{
+        padding:4rem 0;
+    }
+}

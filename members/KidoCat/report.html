@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026年 AI動画広告制作システム 調査報告書</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --bg-color: #f8fafc;
+            --text-color: #1e293b;
+            --border-color: #e2e8f0;
+        }
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+       .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 40px;
+            background: white;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            border-radius: 12px;
+        }
+        header {
+            border-bottom: 3px solid var(--primary-color);
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+        }
+        h1 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin: 0;
+        }
+        h2 {
+            border-left: 5px solid var(--primary-color);
+            padding-left: 15px;
+            margin-top: 40px;
+            font-size: 1.4rem;
+            color: var(--secondary-color);
+        }
+        h3 {
+            color: var(--secondary-color);
+            margin-top: 25px;
+            font-size: 1.2rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+        th {
+            background-color: #f1f5f9;
+            color: #475569;
+        }
+       .highlight {
+            background-color: #eff6ff;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+            margin: 20px 0;
+        }
+       .footer {
+            margin-top: 50px;
+            font-size: 0.8rem;
+            color: #64748b;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+       .mode-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            margin-right: 5px;
+        }
+       .badge-easy { background-color: #dcfce7; color: #166534; }
+       .badge-pro { background-color: #fee2e2; color: #991b1b; }
+        code {
+            background-color: #f1f5f9;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI動画生成システム：広告制作特化型リサーチ報告書 (2026年5月版)</h1>
+            <p>文化祭PR・クリエイティブ制作のための技術評価とモデル選定ガイド</p>
+        </header>
+
+        <section>
+            <p>2026年現在、AI動画生成技術は特定の「ブランド」や「商品」の魅力を伝える広告制作において劇的な進化を遂げています。2024年に発表されたOpenAI Soraが2026年3月にサービス終了（APIは同年9月終了予定）を発表したことを受け、市場は一貫性と制御性に優れた代替モデルへと急速に移行しました 。</p>
+        </section>
+
+        <section>
+            <h2>1. 第1軸：簡単作成モード (Text-to-Video)</h2>
+            <p><span class="mode-badge badge-easy">簡単作成モード</span> プロンプト1つで、SNS向けのキャッチーな広告映像を量産するのに適しています。</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>モデル名</th>
+                        <th>特徴・広告への適性</th>
+                        <th>利用コスト</th>
+                        <th>著作権</th>
+                        <th>ソースURL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Seedance 2.0 Fast</strong></td>
+                        <td>超高速生成（約30秒）。ロゴや商品ディテールの再現性に優れ、EC広告に強い [1, 2, 3]。</td>
+                        <td>約$0.15/秒 [3]</td>
+                        <td>有料プランで商業利用可 [3]</td>
+                        <td><a href="[https://seed.bytedance.com/](https://seed.bytedance.com/)">seed.bytedance.com</a> [4]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kling 3.0 Turbo</strong></td>
+                        <td>実写のような質感が特徴。人物の自然な動きに強く、Bロール（挿入映像）に最適 。</td>
+                        <td>月額$6.99〜 [5]</td>
+                        <td>有料プランで商用可 </td>
+                        <td><a href="[https://klingai.com/](https://klingai.com/)">klingai.com</a> </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pika 2.5</strong></td>
+                        <td>「Pikaffects」で物を膨らませたり等、目を引く特殊効果が得意。SNSのフック作りに有効 [6, 5]。</td>
+                        <td>月額$8〜 [5]</td>
+                        <td>有料プランで商用可 </td>
+                        <td><a href="[https://pika.art/](https://pika.art/)">pika.art</a> [5]</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>2. 第2軸：じっくり作成モード (LLM + Image-to-Video)</h2>
+            <p><span class="mode-badge badge-pro">じっくり作成モード</span> 構成からこだわり、ブランドイメージを統一するためのプロフェッショナルな制作フローです。</p>
+
+            <h3>Step 1: 広告構成と脚本作成 (LLM)</h3>
+            <p>2026年の最先端モデルは、単なるテキストではなく、カメラワークまで指定した「ショットリスト」を出力します。</p>
+            <ul>
+                <li><strong>GPT-5.5 (OpenAI):</strong> 説得力のあるコピーライティングとエージェント機能に優れる 。</li>
+                <li><strong>Claude 4.7 Opus (Anthropic):</strong> ブランドボイス（トーン）の維持能力が高く、洗練された脚本に強い 。</li>
+                <li><strong>Gemini 3.1 Pro (Google):</strong> 100万トークンの文脈窓を活かし、長編のストーリー全体の一貫性を管理可能 。</li>
+            </ul>
+
+            <h3>Step 2: キービジュアル生成 (画像生成AI)</h3>
+            <p>動画の「顔」となる高品質な画像を生成します。ここで「キャラクター固定」を行うことが重要です。</p>
+            <ul>
+                <li><strong>Midjourney V8.1:</strong> ネイティブHD 2K出力（2048x2048px）に対応。映画的な照明と質感において最高評価 。</li>
+                <li><strong>Stable Diffusion 3.5:</strong> 特定の人物（生徒や教師など）をLoRA学習させ、完全に外見を固定した画像を生成可能 。</li>
+            </ul>
+
+            <h3>Step 3: 精密な動画化 (I2Vモデル)</h3>
+            <p>生成した画像をベースに、指定した部分だけを動かします。</p>
+            <ul>
+                <li><strong>Runway Gen-4.5:</strong> 「Motion Brush」やカメラ制御が非常に強力で、広告業界のデファクトスタンダード 。</li>
+                <li><strong>Kling 3.0 Omni:</strong> 5ヶ国語対応のリップシンクとマルチショット・ストーリーボード機能を搭載 。</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>3. 広告制作における「一貫性」維持のテクニック</h2>
+            <div class="highlight">
+                <p><strong>キャラクター/商品DNAシステム :</strong></p>
+                <p>AIは clip ごとに記憶をリセットするため、<code>CHARACTER DNA</code>という共通プロンプトブロック（名前、年齢、服装、特定のアザなど）をすべてのプロンプトに含める手法が推奨されます。これにより、カットが変わっても被写体が別人になることを防げます 。</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>4. 文化祭での実践的なコストシミュレーション</h2>
+            <ul>
+                <li><strong>低コストプラン (0円〜):</strong> 毎日付与される無料クレジットを活用。Kling 3.0 (毎日66クレジット) [7, 8]、Pika (デイリークレジット) [9]、Google Veo 3.1 (Google AI Studio経由) [9] を併用。</li>
+                <li><strong>高品質プラン (約7,000円〜):</strong> 準備期間の1ヶ月だけ <code>Midjourney Standard ($30)</code> と <code>Runway Standard ($15)</code> に加入し、高品質な素材を集中制作。</li>
+            </ul>
+        </section>
+
+        <footer class="footer">
+            <p>※ 本報告書は2026年5月時点の調査データに基づいています。AIモデルの規約や価格は頻繁に更新されるため、利用前に公式サイトを確認してください。</p>
+        </footer>
+    </div>
+</body>
+</html>
