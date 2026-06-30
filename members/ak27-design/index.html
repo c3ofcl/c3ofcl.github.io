@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css">
+</head>
+<body>
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+
+    <header class="header">
+        <div class="nav-container">
+            <a href="#" class="logo">AK</a>
+            <nav class="nav-links">
+                <a href="#about">About</a>
+                <a href="#works">Interests</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-noise"></div>
+        <div class="hero-grid"></div>
+        <div class="hero-content">
+            <p class="hero-label">— Front-End Developer & Designer</p>
+            <h1 class="hero-title split-text">
+                <span>Learning</span>
+                <em>Beauty</em>
+                <span>& Code</span>
+            </h1>
+            <p class="hero-sub">美しさと使いやすさを追求するために、<br>日々インプットと挑戦を続けています。</p>
+            <a href="#works" class="btn-hero" data-cursor="pointer">
+                <span>Explore Interests</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="section-label">01 — About</div>
+            <div class="about-grid">
+                <div class="about-text fade-up-trigger">
+                    <h2 class="section-title">Who<br><em>I Am</em></h2>
+                    <p>こんにちは、AK です。中央大学に在籍する学生です。</p>
+                    <p>C3サークルでWeb制作について学んでおり、このポートフォリオはフロントエンドの練習として作成しています。</p>
+                </div>
+                <div class="about-skills fade-up-trigger">
+                    <h3 class="skills-heading">Current Stack</h3>
+                    <ul class="skills-list">
+                        <li data-cursor="pointer"><span class="skill-num">01</span>HTML5 / CSS3</li>
+                        <li data-cursor="pointer"><span class="skill-num">02</span>UI/UX Design</li>
+                        <li data-cursor="pointer"><span class="skill-num">03</span>Responsive Design</li>
+                        <li data-cursor="pointer"><span class="skill-num">04</span>Typography</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="works" class="works-section">
+        <div class="container">
+            <div class="section-label">02 — Interests</div>
+            <h2 class="section-title fade-up-trigger">What I'm<br><em>Learning</em></h2>
+            <div class="works-grid">
+                <article class="work-card fade-up-trigger" data-cursor="pointer">
+                    <div class="card-num">01</div>
+                    <div class="card-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" alt="UI/UX Design" class="card-image">
+                        <div class="card-img-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Advanced UI/UX</h3>
+                        <p>ユーザーの心理に基づいた情報設計や、より直感的で美しいOOUIの設計手法について深く学んでいます。</p>
+                    </div>
+                    <div class="card-arrow">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                </article>
+                <article class="work-card fade-up-trigger" data-cursor="pointer">
+                    <div class="card-num">02</div>
+                    <div class="card-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80" alt="Frontend Frameworks" class="card-image">
+                        <div class="card-img-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Modern Frameworks</h3>
+                        <p>HTML/CSSの基礎をベースに、動的な機能を実装するためのモダンなJavaScriptフレームワークに関心があります。</p>
+                    </div>
+                    <div class="card-arrow">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                </article>
+                <article class="work-card fade-up-trigger" data-cursor="pointer">
+                    <div class="card-num">03</div>
+                    <div class="card-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80" alt="Web 3D & Animation" class="card-image">
+                        <div class="card-img-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>3D & Interaction</h3>
+                        <p>Webサイトを訪れた人をワクワクさせるような、滑らかなアニメーションとWeb3D技術をインプット中です。</p>
+                    </div>
+                    <div class="card-arrow">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-label">03 — Contact</div>
+            <div class="contact-inner fade-up-trigger">
+                <h2 class="section-title contact-title">Let's<br><em>Connect</em></h2>
+                <p>お仕事のご依頼やご相談など、<br>お気軽にお問い合わせください。</p>
+                <a href="mailto:your@email.com" class="btn-contact" data-cursor="pointer">
+                    <span>メールを送る</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-logo">AK</span>
+            <span>&copy; 2026 All Rights Reserved.</span>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+    
+    <script src="main.js"></script>
+</body>
+</html>

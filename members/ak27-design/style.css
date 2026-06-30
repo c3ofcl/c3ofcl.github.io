@@ -1,0 +1,639 @@
+/* ==========================================================================
+   CSS変数 & リセット（ライトモード最適化）
+   ========================================================================== */
+:root {
+    --bg:         #fcfbfa; 
+    --bg-2:       #f5f3ef; 
+    --bg-3:       #edeae4; 
+    --surface:    #e5e1d8; 
+    --border:     rgba(0, 0, 0, 0.08); 
+    --text:       #1a1917; 
+    --text-muted: #706e6a; 
+    --accent:     #a0865b; 
+    --accent-2:   #547a6f; 
+    --white:      #000000; 
+
+    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-mono:    'DM Mono', 'Courier New', monospace;
+    --font-body:    'Noto Sans JP', sans-serif;
+
+    --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out: cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    /* Lenis導入のため smooth は削除 */
+    cursor: none;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   カスタムカーソル（JS追従用に最適化）
+   ========================================================================== */
+/* html の cursor: none; は削除してPCデフォルトのカーソルを有効化 */
+html {
+    cursor: auto; 
+}
+
+/* 既存の .cursor-dot と .cursor-ring は不要になったため非表示、またはCSSから削除 */
+.cursor-dot,
+.cursor-ring {
+    display: none !important;
+}
+
+/* リンクやボタンにホバーした際、PC初期カーソル（手袋マーク）に変更 */
+[data-cursor="pointer"], a, button, .work-card {
+    cursor: pointer;
+}
+/* ==========================================================================
+   GSAPアニメーション用補助スタイル
+   ========================================================================== */
+.split-text span,
+.split-text em {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+}
+
+.char {
+    display: inline-block;
+    transform: translateY(100%);
+    will-change: transform;
+}
+
+/* 初期状態で一瞬表示されてガタつくのを防ぐ */
+.fade-up-trigger {
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+/* ==========================================================================
+   共通
+   ========================================================================== */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 120px 40px;
+}
+
+.section-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.section-label::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: var(--border);
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 48px;
+}
+
+.section-title em {
+    font-style: italic;
+    color: var(--accent);
+}
+
+/* ==========================================================================
+   ヘッダー
+   ========================================================================== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 0;
+}
+
+.nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(252, 251, 250, 0.85); 
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: -1;
+    border-bottom: 1px solid var(--border);
+}
+
+.logo {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-decoration: none;
+    color: var(--white);
+    transition: color 0.2s ease;
+}
+
+.logo:hover {
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    gap: 36px;
+}
+
+.nav-links a {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: width 0.3s var(--ease-out);
+}
+
+.nav-links a:hover {
+    color: var(--white);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* ==========================================================================
+   ヒーロー
+   ========================================================================== */
+.hero {
+    position: relative;
+    height: 100svh;
+    min-height: 640px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: var(--bg);
+}
+
+.hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+}
+
+.hero-noise {
+    position: absolute;
+    inset: 0;
+    opacity: 0.02; 
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(160, 134, 91, 0.05) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    pointer-events: none;
+    animation: glow-pulse 6s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+    0%, 100% { opacity: 0.6; transform: translate(-50%, -55%) scale(1); }
+    50%       { opacity: 1;   transform: translate(-50%, -55%) scale(1.1); }
+}
+
+/* 初期登場時アニメーションはJSで行うため、CSS側の animation は削除 */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 24px;
+    /* ボタンの下に十分な余白を確保し、下のスクロール要素を押し下げる / 被らせない */
+    padding-bottom: 80px; 
+}
+
+.hero-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    margin-bottom: 28px;
+}
+
+.hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 10vw, 8rem);
+    font-weight: 400;
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 32px;
+}
+
+.hero-title em {
+    font-style: italic;
+    color: var(--accent);
+}
+
+.hero-sub {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.9;
+    margin-bottom: 48px;
+}
+
+.btn-hero {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    border: 1px solid var(--border);
+    background: rgba(0,0,0,0.02);
+    color: var(--text);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: all 0.3s var(--ease-out);
+    backdrop-filter: blur(8px);
+}
+
+.btn-hero:hover {
+    background: rgba(160, 134, 91, 0.08);
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.btn-hero svg {
+    transition: transform 0.3s ease;
+}
+
+.btn-hero:hover svg {
+    transform: translateX(4px);
+}
+/* ==========================================================================
+   About
+   ========================================================================== */
+.about-section {
+    background-color: var(--bg-2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+}
+
+.about-text p {
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    line-height: 1.9;
+}
+
+.skills-heading {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 28px;
+}
+
+.skills-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.skills-list li {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+    color: var(--text);
+    transition: color 0.2s ease;
+}
+
+.skills-list li:first-child {
+    border-top: 1px solid var(--border);
+}
+
+.skills-list li:hover {
+    color: var(--accent);
+}
+
+.skill-num {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+}
+
+/* ==========================================================================
+   Interests / Works
+   ========================================================================== */
+.works-section {
+    background-color: var(--bg);
+}
+
+.works-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    border: 1px solid var(--border);
+    background-color: var(--border); 
+}
+
+.work-card {
+    position: relative;
+    background: var(--bg-3);
+    padding: 0;
+    overflow: hidden;
+    transition: background 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.work-card:hover {
+    background: var(--surface);
+}
+
+.card-num {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    z-index: 2;
+}
+
+.card-img-wrap {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    filter: grayscale(10%) brightness(0.95); 
+    transition: transform 0.6s var(--ease-out), filter 0.4s ease;
+}
+
+.card-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 60%, var(--bg-3) 100%);
+    transition: background 0.3s ease;
+}
+
+.work-card:hover .card-image {
+    transform: scale(1.05);
+    filter: grayscale(0%) brightness(1);
+}
+
+.work-card:hover .card-img-overlay {
+    background: linear-gradient(to bottom, transparent 60%, var(--surface) 100%);
+}
+
+.card-content {
+    padding: 28px 28px 48px;
+    flex: 1;
+}
+
+.card-content h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+}
+
+.card-content p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+
+.card-arrow {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    color: var(--text-muted);
+    transition: color 0.2s ease, transform 0.3s ease;
+}
+
+.work-card:hover .card-arrow {
+    color: var(--accent);
+    transform: translate(4px, -4px);
+}
+
+/* ==========================================================================
+   Contact
+   ========================================================================== */
+.contact-section {
+    background-color: var(--bg-2);
+    border-top: 1px solid var(--border);
+}
+
+.contact-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.contact-title {
+    margin-bottom: 0;
+}
+
+.contact-section p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.9;
+}
+
+.btn-contact {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 40px;
+    background: var(--accent);
+    color: #ffffff; /* ライトモードのオフホワイト背景に対して視認性を高めるため、文字を完全な白に修正 */
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    font-weight: 500;
+    transition: all 0.3s var(--ease-out);
+    margin-top: 12px;
+}
+
+.btn-contact:hover {
+    background: var(--text);
+    color: var(--bg);
+    transform: translateY(-2px);
+}
+
+.btn-contact svg {
+    transition: transform 0.3s ease;
+}
+
+.btn-contact:hover svg {
+    transform: translateX(4px);
+}
+
+/* ==========================================================================
+   フッター
+   ========================================================================== */
+.footer {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    padding: 32px 40px;
+}
+
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-logo {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+}
+
+.footer span:last-child {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   レスポンシブ
+   ========================================================================== */
+@media (max-width: 900px) {
+    .works-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 80px 24px;
+    }
+
+    .nav-container {
+        padding: 20px 24px;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .hero {
+        background-attachment: scroll;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+
+    .cursor-dot,
+    .cursor-ring {
+        display: none !important;
+    }
+
+    html {
+        cursor: auto;
+    }
+}
