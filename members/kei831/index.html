@@ -1,11 +1,163 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello World</title>
-  </head>
-  <body>
-    <h1>Hello, World!</h1>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="portstyle.css">
+    <title>My Portfolio</title>
+</head>
+<body>
+    <header>
+        <h1 class="title">fooooooooooooo</h1>
+        <p>デザイナー・Web開発者</p>
+    </header>
+
+    <button class="menu-toggle" id="menuToggle">☰</button>
+    <nav class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#portfolio">ポートフォリオ</a></li>
+            <li><a href="#skills">スキル</a></li>
+            <li><a href="#contact">お問い合わせ</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="hero-section">
+            <h2 class = "welcome">Hello!</h2>
+            <p>中央大学国際情報学部(ITL)に所属する学生です。ものを作ったりしています。</p>
+            <a href="#contact" class="cta-button">お問い合わせ</a>
+        </section>
+
+        <section id="portfolio">
+            <h2>作品紹介</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="portfolio-image"></div>
+                    <div class="portfolio-info">
+                        <h3></h3>
+                        <p></p>
+                        <div class="tags">
+                            <span class="tag"></span>
+                            <span class="tag"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="portfolio-image"></div>
+                    <div class="portfolio-info">
+                        <h3></h3>
+                        <p></p>
+                        <div class="tags">
+                            <span class="tag"></span>
+                            <span class="tag"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="portfolio-image"></div>
+                    <div class="portfolio-info">
+                        <h3></h3>
+                        <p></p>
+                        <div class="tags">
+                            <span class="tag"></span>
+                            <span class="tag"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="portfolio-image"></div>
+                    <div class="portfolio-info">
+                        <h3></h3>
+                        <p></p>
+                        <div class="tags">
+                            <span class="tag"></span>
+                            <span class="tag"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>スキル</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">D</div>
+                    <h3>Design</h3>
+                    <p>UI/UXデザイン</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">F</div>
+                    <h3>Frontend</h3>
+                    <p>HTML/CSS/JS</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">S</div>
+                    <h3>Backend</h3>
+                    <p>サーバー開発</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">A</div>
+                    <h3>Analytics</h3>
+                    <p>データ分析</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">P</div>
+                    <h3>Performance</h3>
+                    <p>最適化</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">T</div>
+                    <h3>Tools</h3>
+                    <p>Git/Docker</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="contact-section">
+                <h2>Contact</h2>
+                <p>プロジェクトのご依頼やご質問があればお気軽にお問い合わせください。</p>
+                
+                <div class="social-links">
+                    <a href="#" class="social-icon" title="Twitter">X</a>
+                    <a href="#" class="social-icon" title="GitHub">G</a>
+                    <a href="#" class="social-icon" title="LinkedIn">in</a>
+                    <a href="#" class="social-icon" title="Email">@</a>
+                </div>
+
+                <a href="#" class="cta-button">お問い合わせ</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 fooooooooooooo. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+    </script>
+</body>
 </html>
