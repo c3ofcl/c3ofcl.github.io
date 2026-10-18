@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 Not Found | C3</title>
+  <script>
+    (function () {
+      var path = window.location.pathname;
+      // capture the username (member name) immediately after "members/"
+      var regex = /^((?:.*\/)?members\/)([^\/]+)(\/.*)?$/i;
+      var match = path.match(regex);
+      if (match) {
+        var prefix = match[1];
+        var member = match[2];
+        var rest = match[3] || "";
+
+        // redirect to lowercase URL if the member name contains uppercase letters
+        if (/[A-Z]/.test(member)) {
+          var lowerMember = member.toLowerCase();
+          if (!rest && !lowerMember.includes('.')) {
+            rest = "/";
+          }
+          var newPath = prefix + lowerMember + rest;
+          var targetUrl = window.location.origin + newPath + window.location.search + window.location.hash;
+          window.location.replace(targetUrl);
+          return;
+        }
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="/css/404.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>404</h1>
+    <h2>Page Not Found</h2>
+    <p>指定されたページが見つかりませんでした。<br>URLをご確認いただくか、トップページよりお探しください。</p>
+    <div class="actions">
+      <a href="/" class="btn btn-primary">トップページへ</a>
+      <a href="/members/" class="btn btn-secondary">メンバー一覧へ</a>
+    </div>
+  </div>
+</body>
+
+</html>

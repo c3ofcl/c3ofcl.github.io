@@ -1,8 +1,11 @@
 name: Aggregate Portfolios and Deploy
 
 on:
+  push:
+    branches:
+      - main
   schedule:
-    - cron: '0 3,15 * * *' 
+    - cron: '0 3,15 * * *'
   workflow_dispatch:
 
 permissions:
@@ -15,22 +18,37 @@ jobs:
       - name: Checkout C3 Repository
         uses: actions/checkout@v4
 
-      - name: Clean Up member Directory
+      - name: Clean Up Member Subdirectories
         run: |
-          rm -rf members
           mkdir -p members
+          # remove only subdirectories under members/, preserving static files like members/index.html
+          find members -mindepth 1 -maxdepth 1 -type d -exec rm -rf {} +
 
       - name: Clone member repositories
         run: |
           while IFS= read -r repo || [ -n "$repo" ]; do
-            [[ -z "$repo" || "$repo" =~ ^# ]] && continue
-            
-            username=$(echo "$repo" | cut -d'/' -f1)
-            echo "Cloning $repo into members/$username..."
-            git clone --depth 1 "https://github.com/${repo}.git" "members/${username}"
-            
-            rm -rf "members/${username}/.git"
+            # trim whitespace and skip empty lines or comments
+            repo_trimmed=$(echo "$repo" | xargs)
+            [[ -z "$repo_trimmed" || "$repo_trimmed" =~ ^# ]] && continue
+
+            username=$(echo "$repo_trimmed" | cut -d'/' -f1)
+            username_lower=$(echo "$username" | tr '[:upper:]' '[:lower:]')
+
+            echo "Cloning $repo_trimmed into members/${username_lower}..."
+            target_dir="members/${username_lower}"
+            rm -rf "$target_dir"
+
+            if git clone --depth 1 "https://github.com/${repo_trimmed}.git" "$target_dir"; then
+              rm -rf "${target_dir}/.git"
+              echo "Successfully cloned $repo_trimmed into $target_dir."
+            else
+              echo "::warning::Failed to clone $repo_trimmed, skipping."
+              rm -rf "$target_dir"
+            fi
           done < members.txt
+
+      - name: Ensure .nojekyll exists
+        run: touch .nojekyll
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
