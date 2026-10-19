@@ -5,20 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>メンバー - C3 | Creative Computing Club</title>
-    <meta name="description" content="C3 | Creative Computing Club のメンバー紹介ページです。">
+    <meta name="description" content="C3 | Creative Computing Club メンバーをポートフォリオの一覧ページでご紹介します。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/members.css">
     <script src="/js/components.js" defer></script>
+    <script src="/js/members.js" defer></script>
 </head>
 
 <body>
     <div class="site-container">
         <site-header></site-header>
-        <main></main>
+        <main>
+            <section class="members-section" aria-label="Members Directory">
+                <header class="members-header">
+                    <span class="members-tag">Members</span>
+                    <h1 class="members-title">メンバー</h1>
+                    <p class="members-description">C3メンバーをポートフォリオの一覧ページでご紹介します。</p>
+                </header>
+
+                <div class="members-grid" id="members-grid">
+                    <noscript>
+                        <p class="members-noscript">メンバー一覧を表示するにはJavaScriptを有効にしてください。</p>
+                    </noscript>
+                </div>
+            </section>
+        </main>
         <site-footer></site-footer>
     </div>
 </body>

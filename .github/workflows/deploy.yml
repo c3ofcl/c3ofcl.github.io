@@ -47,6 +47,9 @@ jobs:
             fi
           done < members.txt
 
+      - name: Generate Members List
+        run: node scripts/generate-members.cjs
+
       - name: Ensure .nojekyll exists
         run: touch .nojekyll
 
