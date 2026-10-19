@@ -1,12 +1,116 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>C3 | Creative Computing Club</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Creative Computing Club (C3) - コンピューティングとクリエイティビティの交差する場所">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
+    <div class="site-container">
+        <!-- main visual -->
+        <header class="hero mesh-bg" id="hero">
+            <!-- navigation bar -->
+            <nav class="hero-nav" aria-label="Main Navigation">
+                <a href="/" class="main-logo">
+                    <img src="images/c3_logo_text_white.png" alt="C3 | Creative Computing Club" class="main-logo-img">
+                </a>
+
+                <!-- mobile menu toggle -->
+                <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false"
+                    aria-controls="hero-menu" aria-label="メニューを開閉する">
+                    <span class="menu-toggle-bar"></span>
+                    <span class="menu-toggle-bar"></span>
+                    <span class="menu-toggle-bar"></span>
+                </button>
+
+                <!-- navigation links -->
+                <ul class="hero-menu" id="hero-menu">
+                    <li><a href="/" class="hero-menu-link">ホーム</a></li>
+                    <li><a href="/members/" class="hero-menu-link">メンバー</a></li>
+                </ul>
+            </nav>
+
+            <!-- hero content -->
+            <div class="hero-content">
+                <h1 class="hero-title">創作 &times; コンピュータ</h1>
+                <p class="hero-subtitle">コンピュータをツールとして活用した創作活動を行う、中央大学のサークルです。</p>
+            </div>
+        </header>
+
+        <!-- feature grid -->
+        <main>
+            <section class="section-grid" aria-label="Feature Grid">
+                <div class="grid-container">
+                    <div class="grid-item" id="grid-item-1"></div>
+                    <div class="grid-item" id="grid-item-2"></div>
+                    <div class="grid-item" id="grid-item-3"></div>
+                </div>
+            </section>
+        </main>
+
+        <!-- footer credit -->
+        <footer class="site-footer">
+            <p class="site-footer-text">&copy; 2026 C3 | Creative Computing Club</p>
+        </footer>
+    </div>
+
+    <!-- mobile menu script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggle = document.getElementById('menu-toggle');
+            const menu = document.getElementById('hero-menu');
+            const heroContent = document.querySelector('.hero-content');
+
+            function setMenuState(open) {
+                toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+                menu.classList.toggle('is-active', open);
+                if (heroContent) {
+                    heroContent.classList.toggle('is-blurred', open);
+                }
+            }
+
+            if (toggle && menu) {
+                toggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+                    setMenuState(!isExpanded);
+                });
+
+                // close menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!toggle.contains(e.target) && !menu.contains(e.target) && menu.classList.contains('is-active')) {
+                        setMenuState(false);
+                    }
+                });
+
+                // close menu with escape key
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && menu.classList.contains('is-active')) {
+                        setMenuState(false);
+                        toggle.focus();
+                    }
+                });
+
+                // reset on resize to desktop
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth >= 768 && menu.classList.contains('is-active')) {
+                        setMenuState(false);
+                    }
+                });
+            }
+        });
+    </script>
+
 </body>
+
 </html>
