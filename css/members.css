@@ -11,19 +11,6 @@
     }
 }
 
-.members-tag {
-    display: inline-block;
-    font-size: var(--font-size-100);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--color-primary);
-    background-color: var(--header-link-hover-bg);
-    padding: 0.25rem 0.625rem;
-    border-radius: 9999px;
-    margin-bottom: 0.75rem;
-}
-
 .members-title {
     font-size: var(--font-size-600);
     font-weight: 800;
