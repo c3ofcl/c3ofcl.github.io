@@ -22,13 +22,13 @@
     --font-base: 'Inter', 'Noto Sans CJK JP', 'Noto Sans JP', sans-serif;
 
     /* fluid typography (320px to 1200px) */
-    --font-size-100: clamp(0.65rem, 0.61rem + 0.18vw, 0.75rem);
-    --font-size-200: clamp(0.75rem, 0.7rem + 0.23vw, 0.875rem);
-    --font-size-300: clamp(0.85rem, 0.8rem + 0.27vw, 1rem);
-    --font-size-400: clamp(0.95rem, 0.84rem + 0.55vw, 1.25rem);
-    --font-size-500: clamp(1.15rem, 0.93rem + 1.09vw, 1.75rem);
-    --font-size-600: clamp(1.35rem, 1.02rem + 1.64vw, 2.25rem);
-    --font-size-700: clamp(1.65rem, 1.16rem + 2.45vw, 3rem);
+    --font-size-100: clamp(0.75rem, 0.73rem + 0.11vw, 0.8125rem);
+    --font-size-200: clamp(0.875rem, 0.85rem + 0.11vw, 0.9375rem);
+    --font-size-300: clamp(1rem, 0.97rem + 0.14vw, 1.075rem);
+    --font-size-400: clamp(1.125rem, 1.08rem + 0.23vw, 1.25rem);
+    --font-size-500: clamp(1.35rem, 1.24rem + 0.55vw, 1.65rem);
+    --font-size-600: clamp(1.6rem, 1.41rem + 0.95vw, 2.125rem);
+    --font-size-700: clamp(2rem, 1.69rem + 1.55vw, 2.85rem);
 }
 
 html,
@@ -38,7 +38,7 @@ body {
     background-color: var(--bg-page);
     color: var(--text-primary);
     font-family: var(--font-base);
-    font-size: var(--font-size-400);
+    font-size: var(--font-size-300);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
 }
@@ -73,7 +73,7 @@ a {
     justify-content: space-between;
     overflow: hidden;
     position: relative;
-    padding: 24px 20px;
+    padding: 20px;
     border-radius: 20px;
 }
 
@@ -204,7 +204,7 @@ a {
 }
 
 .hero-menu-link {
-    font-size: var(--font-size-500);
+    font-size: var(--font-size-400);
     font-weight: normal;
     color: var(--text-hero);
     text-align: right;
@@ -243,7 +243,7 @@ a {
     }
 
     .hero-menu-link {
-        font-size: var(--font-size-300);
+        font-size: var(--font-size-200);
         font-weight: normal;
         text-align: left;
         padding: 6px 14px;
@@ -286,7 +286,6 @@ a {
     font-weight: bold;
     letter-spacing: -0.025em;
     line-height: 1.12;
-    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
     margin-bottom: 12px;
     text-align: center;
 }
@@ -295,9 +294,8 @@ a {
     font-size: var(--font-size-400);
     font-weight: normal;
     line-height: 1.5;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     opacity: 0.94;
-    max-width: 600px;
+    max-width: 720px;
     text-align: center;
 }
 
@@ -348,6 +346,6 @@ a {
 .site-footer-text {
     color: var(--text-primary);
     opacity: 0.45;
-    font-size: var(--font-size-200);
+    font-size: var(--font-size-100);
     letter-spacing: 0.03em;
 }
