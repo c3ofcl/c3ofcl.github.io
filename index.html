@@ -5,13 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>C3 | Creative Computing Club</title>
-    <meta name="description" content="Creative Computing Club (C3) - コンピューティングとクリエイティビティの交差する場所">
+    <meta name="description"
+        content="C3 | Creative Computing Club - 中央大学市ヶ谷田町キャンパス（国際情報学部/iTL）を拠点に、コンピュータをツールとして用いた創作活動を展開するサークルです。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="/js/components.js" defer></script>
 </head>
 
 <body>
@@ -51,20 +54,24 @@
         <main>
             <section class="section-grid" aria-label="Feature Grid">
                 <div class="grid-container">
-                    <div class="grid-item" id="grid-item-1"></div>
-                    <div class="grid-item" id="grid-item-2"></div>
-                    <div class="grid-item" id="grid-item-3"></div>
+                    <a href="#" class="grid-item" id="grid-item-1">
+                        <h2 class="grid-item-title">プロジェクト</h2>
+                        <p class="grid-item-subtitle">これまでとこれから。</p>
+                    </a>
+                    <a href="/members/" class="grid-item" id="grid-item-2">
+                        <h2 class="grid-item-title">メンバー</h2>
+                        <p class="grid-item-subtitle">C3の仲間を紹介します。</p>
+                    </a>
+                    <a href="#" class="grid-item" id="grid-item-3">
+                        <h2 class="grid-item-title">あなたへ。</h2>
+                        <p class="grid-item-subtitle">C3は、つくってみたいを応援しています。</p>
+                    </a>
                 </div>
             </section>
         </main>
 
         <!-- footer credit -->
-        <footer class="site-footer">
-            <p class="site-footer-text">
-                &copy;2026 C3 | Creative Computing Club.
-                <br />All Rights Reserved.
-            </p>
-        </footer>
+        <site-footer></site-footer>
     </div>
 
     <!-- mobile menu script -->
