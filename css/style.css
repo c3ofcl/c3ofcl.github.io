@@ -13,6 +13,8 @@
     --text-primary: #1a1a1a;
     --text-secondary: #666666;
     --text-hero: #ffffff;
+    --color-primary: #ff4500;
+    --color-main: var(--color-primary);
     --card-bg: rgba(255, 255, 255, 0.7);
     --card-border: #d9d9df;
 
@@ -36,7 +38,7 @@ body {
     background-color: var(--bg-page);
     color: var(--text-primary);
     font-family: var(--font-base);
-    font-size: var(--font-size-300);
+    font-size: var(--font-size-400);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
 }
@@ -202,7 +204,7 @@ a {
 }
 
 .hero-menu-link {
-    font-size: var(--font-size-400);
+    font-size: var(--font-size-500);
     font-weight: normal;
     color: var(--text-hero);
     text-align: right;
@@ -241,7 +243,7 @@ a {
     }
 
     .hero-menu-link {
-        font-size: var(--font-size-200);
+        font-size: var(--font-size-300);
         font-weight: normal;
         text-align: left;
         padding: 6px 14px;
@@ -290,7 +292,7 @@ a {
 }
 
 .hero-subtitle {
-    font-size: var(--font-size-300);
+    font-size: var(--font-size-400);
     font-weight: normal;
     line-height: 1.5;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -346,6 +348,6 @@ a {
 .site-footer-text {
     color: var(--text-primary);
     opacity: 0.45;
-    font-size: var(--font-size-100);
+    font-size: var(--font-size-200);
     letter-spacing: 0.03em;
 }
