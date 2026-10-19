@@ -4,13 +4,13 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  padding: 24px 16px;
+  padding: 1.5rem 1rem;
   background-color: var(--bg-page);
   color: var(--text-primary);
 }
 
 .error-page {
-  max-width: 720px;
+  max-width: 45rem;
   width: 100%;
   text-align: center;
 }
@@ -21,7 +21,7 @@ h1 {
   font-weight: 700;
   color: var(--text-primary);
   line-height: 1.1;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
   letter-spacing: -0.03em;
 }
 
@@ -30,7 +30,7 @@ h2 {
   font-size: var(--font-size-400);
   font-weight: 400;
   color: var(--text-primary);
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
   letter-spacing: -0.01em;
 }
 
@@ -38,7 +38,7 @@ p {
   font-size: var(--font-size-300);
   color: var(--text-primary);
   line-height: 1.7;
-  margin-bottom: 32px;
+  margin-bottom: 2rem;
 }
 
 .actions {

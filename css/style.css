@@ -9,38 +9,61 @@
 
 :root {
     /* colors */
-    --bg-page: #f7f7f9; /* page canvas background */
-    --text-primary: #1a1a1a; /* body text and primary headings */
-    --text-secondary: #666666; /* secondary text, captions, and muted labels */
-    --text-hero: #ffffff; /* high-contrast text on hero or dark backgrounds */
-    --color-primary: #ff4500; /* brand accent, primary buttons, key highlights */
-    --color-main: var(--color-primary); /* alias for primary brand accent */
-    --card-bg: rgba(255, 255, 255, 0.7); /* glass card and panel background */
-    --card-border: #d9d9df; /* subtle border for glass cards and panels */
+    --bg-page: #f7f7f9;
+    /* page canvas background */
+    --text-primary: #1a1a1a;
+    /* body text and primary headings */
+    --text-secondary: #666666;
+    /* secondary text, captions, and muted labels */
+    --text-hero: #ffffff;
+    /* high-contrast text on hero or dark backgrounds */
+    --color-primary: #ff4500;
+    /* brand accent, primary buttons, key highlights */
+    --color-main: var(--color-primary);
+    /* alias for primary brand accent */
+    --card-bg: rgba(255, 255, 255, 0.7);
+    /* glass card and panel background */
+    --card-border: #d9d9df;
+    /* subtle border for glass cards and panels */
 
     /* shadows */
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06); /* low elevation, default buttons and small items */
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08); /* medium elevation, hovered items and popovers */
-    --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.04); /* soft ambient shadow for cards and containers */
-    --drop-shadow-sm: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15)); /* subtle outline for small transparent graphics */
-    --drop-shadow-md: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.25)); /* prominent outline for logos and transparent assets */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+    /* low elevation, default buttons and small items */
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    /* medium elevation, hovered items and popovers */
+    --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.04);
+    /* soft ambient shadow for cards and containers */
+    --drop-shadow-sm: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+    /* subtle outline for small transparent graphics */
+    --drop-shadow-md: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.25));
+    /* prominent outline for logos and transparent assets */
 
     /* interactions */
-    --hover-darken: brightness(0.90); /* slight tone reduction on hover */
-    --active-darken: brightness(0.82); /* deeper tone reduction on click or press */
-    --transition-fast: 0.2s ease; /* quick timing for hover, active, and focus states */
+    --hover-darken: brightness(0.90);
+    /* slight tone reduction on hover */
+    --active-darken: brightness(0.82);
+    /* deeper tone reduction on click or press */
+    --transition-fast: 0.2s ease;
+    /* quick timing for hover, active, and focus states */
 
-    /* fonts: Inter for latin/numbers, Noto Sans CJK JP for japanese */
+    /* fonts: "Inter" for latin/numbers, "Noto Sans CJK JP" for japanese */
     --font-base: 'Inter', 'Noto Sans CJK JP', 'Noto Sans JP', sans-serif;
 
     /* font size (320px to 1200px) */
-    --font-size-100: clamp(0.75rem, 0.73rem + 0.11vw, 0.8125rem); /* captions, fine print, and footer text */
-    --font-size-200: clamp(0.875rem, 0.85rem + 0.11vw, 0.9375rem); /* buttons, navigation links, and small labels */
-    --font-size-300: clamp(1rem, 0.97rem + 0.14vw, 1.075rem); /* default body reading text */
-    --font-size-400: clamp(1.125rem, 1.08rem + 0.23vw, 1.25rem); /* subheadings, lead text, and hero subtitle */
-    --font-size-500: clamp(1.25rem, 1.1rem + 0.73vw, 1.65rem); /* tertiary headings and sub-section titles */
-    --font-size-600: clamp(1.4rem, 1.14rem + 1.32vw, 2.125rem); /* secondary headings and section titles */
-    --font-size-700: clamp(1.65rem, 1.21rem + 2.18vw, 2.85rem); /* primary display headings and hero title */
+    --font-size-100: clamp(0.75rem, 0.73rem + 0.11vw, 0.8125rem);
+    /* captions, fine print, and footer text */
+    --font-size-200: clamp(0.875rem, 0.85rem + 0.11vw, 0.9375rem);
+    /* buttons, navigation links, and small labels */
+    --font-size-300: clamp(1rem, 0.97rem + 0.14vw, 1.075rem);
+    /* default body reading text */
+    --font-size-400: clamp(1.125rem, 1.08rem + 0.23vw, 1.25rem);
+    /* subheadings, lead text, and hero subtitle */
+    --font-size-500: clamp(1.25rem, 1.1rem + 0.73vw, 1.65rem);
+    /* tertiary headings and sub-section titles */
+    --font-size-600: clamp(1.4rem, 1.14rem + 1.32vw, 2.125rem);
+    /* secondary headings and section titles */
+    --font-size-700: clamp(1.65rem, 1.21rem + 2.18vw, 2.85rem);
+    /* primary display headings and hero title */
 }
 
 html,
@@ -65,12 +88,12 @@ a {
     width: 100%;
     max-width: 1280px;
     margin: 0 auto;
-    padding: 16px 16px 48px;
+    padding: 1rem 1rem 3rem;
 }
 
 @media (min-width: 768px) {
     .site-container {
-        padding: 24px 32px 64px;
+        padding: 1.5rem 2rem 4rem;
     }
 }
 
@@ -85,14 +108,14 @@ a {
     justify-content: space-between;
     overflow: hidden;
     position: relative;
-    padding: 20px;
-    border-radius: 20px;
+    padding: 1.25rem;
+    border-radius: 1rem;
 }
 
 @media (min-width: 768px) {
     .hero {
-        padding: 36px 44px;
-        border-radius: 24px;
+        padding: 2.25rem 2.75rem;
+        border-radius: 1.25rem;
     }
 }
 
@@ -163,7 +186,7 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 0.3125rem;
     background: transparent;
     border: none;
     cursor: pointer;
@@ -176,7 +199,7 @@ a {
     width: 80%;
     height: 2px;
     background-color: var(--text-hero);
-    border-radius: 2px;
+    border-radius: 0.125rem;
     transition: transform 0.25s ease, opacity 0.25s ease;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
@@ -206,8 +229,8 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
-    padding: 24px;
-    gap: 16px;
+    padding: 1.5rem;
+    gap: 1rem;
     z-index: 20;
 
     opacity: 0;
@@ -226,7 +249,7 @@ a {
     color: var(--text-hero);
     text-align: right;
     display: inline-block;
-    padding: 8px 0;
+    padding: 0.5rem 0;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.28);
     filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.18));
     transition: transform 0.2s ease, opacity 0.2s ease;
@@ -253,7 +276,7 @@ a {
         align-items: center;
         justify-content: flex-end;
         padding: 0;
-        gap: 16px;
+        gap: 1rem;
         opacity: 1;
         visibility: visible;
         transform: none;
@@ -263,8 +286,8 @@ a {
         font-size: var(--font-size-200);
         font-weight: normal;
         text-align: left;
-        padding: 6px 14px;
-        border-radius: 8px;
+        padding: 0.375rem 0.875rem;
+        border-radius: 0.375rem;
         background-color: transparent;
         filter: none;
         text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
@@ -303,7 +326,7 @@ a {
     font-weight: bold;
     letter-spacing: -0.025em;
     line-height: 1.12;
-    margin-bottom: 12px;
+    margin-bottom: 0.75rem;
     text-align: center;
 }
 
@@ -319,12 +342,12 @@ a {
 /* grid section */
 .section-grid {
     width: 100%;
-    padding-top: 20px;
+    padding-top: 1.25rem;
 }
 
 @media (min-width: 768px) {
     .section-grid {
-        padding-top: 28px;
+        padding-top: 1.75rem;
     }
 }
 
@@ -332,13 +355,13 @@ a {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 1rem;
 }
 
 @media (min-width: 768px) {
     .grid-container {
         grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
+        gap: 1.25rem;
     }
 }
 
@@ -347,7 +370,7 @@ a {
     width: 100%;
     background-color: var(--card-bg);
     border: 1px solid var(--card-border);
-    border-radius: 16px;
+    border-radius: 0.75rem;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     box-shadow: var(--shadow-card);
@@ -356,7 +379,7 @@ a {
 /* footer */
 .site-footer {
     width: 100%;
-    padding-top: 28px;
+    padding-top: 1.75rem;
     text-align: center;
 }
 
@@ -372,8 +395,8 @@ a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 24px;
-    border-radius: 8px;
+    padding: 0.625rem 1.5rem;
+    border-radius: 0.375rem;
     font-size: var(--font-size-200);
     font-weight: 500;
     line-height: 1.5;
