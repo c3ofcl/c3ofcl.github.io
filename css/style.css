@@ -9,26 +9,38 @@
 
 :root {
     /* colors */
-    --bg-page: #f7f7f9;
-    --text-primary: #1a1a1a;
-    --text-secondary: #666666;
-    --text-hero: #ffffff;
-    --color-primary: #ff4500;
-    --color-main: var(--color-primary);
-    --card-bg: rgba(255, 255, 255, 0.7);
-    --card-border: #d9d9df;
+    --bg-page: #f7f7f9; /* page canvas background */
+    --text-primary: #1a1a1a; /* body text and primary headings */
+    --text-secondary: #666666; /* secondary text, captions, and muted labels */
+    --text-hero: #ffffff; /* high-contrast text on hero or dark backgrounds */
+    --color-primary: #ff4500; /* brand accent, primary buttons, key highlights */
+    --color-main: var(--color-primary); /* alias for primary brand accent */
+    --card-bg: rgba(255, 255, 255, 0.7); /* glass card and panel background */
+    --card-border: #d9d9df; /* subtle border for glass cards and panels */
+
+    /* shadows */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06); /* low elevation, default buttons and small items */
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08); /* medium elevation, hovered items and popovers */
+    --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.04); /* soft ambient shadow for cards and containers */
+    --drop-shadow-sm: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15)); /* subtle outline for small transparent graphics */
+    --drop-shadow-md: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.25)); /* prominent outline for logos and transparent assets */
+
+    /* interactions */
+    --hover-darken: brightness(0.90); /* slight tone reduction on hover */
+    --active-darken: brightness(0.82); /* deeper tone reduction on click or press */
+    --transition-fast: 0.2s ease; /* quick timing for hover, active, and focus states */
 
     /* fonts: Inter for latin/numbers, Noto Sans CJK JP for japanese */
     --font-base: 'Inter', 'Noto Sans CJK JP', 'Noto Sans JP', sans-serif;
 
-    /* fluid typography (320px to 1200px) */
-    --font-size-100: clamp(0.75rem, 0.73rem + 0.11vw, 0.8125rem);
-    --font-size-200: clamp(0.875rem, 0.85rem + 0.11vw, 0.9375rem);
-    --font-size-300: clamp(1rem, 0.97rem + 0.14vw, 1.075rem);
-    --font-size-400: clamp(1.125rem, 1.08rem + 0.23vw, 1.25rem);
-    --font-size-500: clamp(1.35rem, 1.24rem + 0.55vw, 1.65rem);
-    --font-size-600: clamp(1.6rem, 1.41rem + 0.95vw, 2.125rem);
-    --font-size-700: clamp(2rem, 1.69rem + 1.55vw, 2.85rem);
+    /* font size (320px to 1200px) */
+    --font-size-100: clamp(0.75rem, 0.73rem + 0.11vw, 0.8125rem); /* captions, fine print, and footer text */
+    --font-size-200: clamp(0.875rem, 0.85rem + 0.11vw, 0.9375rem); /* buttons, navigation links, and small labels */
+    --font-size-300: clamp(1rem, 0.97rem + 0.14vw, 1.075rem); /* default body reading text */
+    --font-size-400: clamp(1.125rem, 1.08rem + 0.23vw, 1.25rem); /* subheadings, lead text, and hero subtitle */
+    --font-size-500: clamp(1.25rem, 1.1rem + 0.73vw, 1.65rem); /* tertiary headings and sub-section titles */
+    --font-size-600: clamp(1.4rem, 1.14rem + 1.32vw, 2.125rem); /* secondary headings and section titles */
+    --font-size-700: clamp(1.65rem, 1.21rem + 2.18vw, 2.85rem); /* primary display headings and hero title */
 }
 
 html,
@@ -79,9 +91,14 @@ a {
 
 @media (min-width: 768px) {
     .hero {
-        aspect-ratio: 16 / 9;
         padding: 36px 44px;
         border-radius: 24px;
+    }
+}
+
+@media (min-width: 768px) and (orientation: landscape) {
+    .hero {
+        aspect-ratio: 16 / 9;
     }
 }
 
@@ -134,7 +151,7 @@ a {
     height: clamp(20px, 3.5cqw, 32px);
     width: auto;
     object-fit: contain;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.25));
+    filter: var(--drop-shadow-md);
 }
 
 /* mobile menu toggle */
@@ -333,7 +350,7 @@ a {
     border-radius: 16px;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    box-shadow: var(--shadow-card);
 }
 
 /* footer */
@@ -348,4 +365,44 @@ a {
     opacity: 0.45;
     font-size: var(--font-size-100);
     letter-spacing: 0.03em;
+}
+
+/* buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: var(--font-size-200);
+    font-weight: 500;
+    line-height: 1.5;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    box-shadow: var(--shadow-sm);
+    transition: filter var(--transition-fast),
+        box-shadow var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.btn:hover {
+    filter: var(--hover-darken);
+    box-shadow: var(--shadow-md);
+}
+
+.btn:active {
+    filter: var(--active-darken);
+    transform: translateY(1px);
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--text-hero);
+}
+
+.btn-secondary {
+    background-color: #ffffff;
+    color: var(--text-primary);
+    border: 1px solid var(--card-border);
 }

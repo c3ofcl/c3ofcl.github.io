@@ -45,30 +45,3 @@ p {
   display: flex;
   justify-content: center;
 }
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 24px;
-  border-radius: 8px;
-  font-size: var(--font-size-200);
-  font-weight: 500;
-  line-height: 1.5;
-  box-shadow: none;
-  transition: opacity 0.2s ease;
-}
-
-.btn:hover {
-  opacity: 0.85;
-}
-
-.btn-primary {
-  background-color: var(--color-primary);
-  color: var(--text-hero);
-  box-shadow: none;
-}
-
-.btn-primary:hover {
-  box-shadow: none;
-}
