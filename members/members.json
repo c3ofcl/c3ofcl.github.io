@@ -1,7 +1,17 @@
 [
   {
-    "id": "ak27-design",
-    "name": "ak27-design"
+    "id": "last-stand-phase5",
+    "name": "Last-Stand-PHASE5"
+  },
+  {
+    "id": "k3ijay",
+    "name": "k3ijay",
+    "url": "https://k3ijay.github.io/",
+    "isExternal": true
+  },
+  {
+    "id": "kidocat",
+    "name": "KidoCat"
   },
   {
     "id": "kariwacatie",
@@ -12,11 +22,7 @@
     "name": "kei831"
   },
   {
-    "id": "kidocat",
-    "name": "KidoCat"
-  },
-  {
-    "id": "last-stand-phase5",
-    "name": "Last-Stand-PHASE5"
+    "id": "ak27-design",
+    "name": "ak27-design"
   }
 ]

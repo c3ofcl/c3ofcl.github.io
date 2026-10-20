@@ -6,8 +6,21 @@ const membersDir = path.join(rootDir, 'members');
 const membersTxtPath = path.join(rootDir, 'members.txt');
 const outputPath = path.join(membersDir, 'members.json');
 
-/* parse members.txt for casing */
-const casingMap = new Map();
+/* parse members.txt and preserve order */
+if (!fs.existsSync(membersDir)) {
+    console.error(`Members directory not found at: ${membersDir}`);
+    process.exit(1);
+}
+
+const existingDirs = new Set(
+    fs.readdirSync(membersDir, { withFileTypes: true })
+        .filter((entry) => entry.isDirectory() && !entry.name.startsWith('.'))
+        .map((entry) => entry.name.toLowerCase())
+);
+
+const membersList = [];
+const processedIds = new Set();
+const isCI = process.env.GITHUB_ACTIONS === 'true';
 
 if (fs.existsSync(membersTxtPath)) {
     const lines = fs.readFileSync(membersTxtPath, 'utf-8').split(/\r?\n/);
@@ -15,39 +28,56 @@ if (fs.existsSync(membersTxtPath)) {
         const trimmed = line.trim();
         if (!trimmed || trimmed.startsWith('#')) continue;
 
-        const originalUsername = trimmed.split('/')[0].trim();
-        if (originalUsername) {
-            casingMap.set(originalUsername.toLowerCase(), originalUsername);
+        const parts = trimmed.split(/\s+/);
+        // check for external URL: "username https://..."
+        if (parts.length >= 2 && /^https?:\/\//i.test(parts[1])) {
+            const originalUsername = parts[0].trim();
+            const url = parts[1].trim();
+            const id = originalUsername.toLowerCase();
+            if (!processedIds.has(id)) {
+                membersList.push({
+                    id: id,
+                    name: originalUsername,
+                    url: url,
+                    isExternal: true,
+                });
+                processedIds.add(id);
+            }
+        } else {
+            // normal internal repo: "username/repo"
+            const originalUsername = trimmed.split('/')[0].trim();
+            const id = originalUsername.toLowerCase();
+            const dirExists = existingDirs.has(id);
+
+            // in CI, only include successfully cloned directories; locally include if dir exists or if no dirs exist yet
+            if (!isCI || dirExists) {
+                if (!processedIds.has(id)) {
+                    membersList.push({
+                        id: id,
+                        name: originalUsername,
+                    });
+                    processedIds.add(id);
+                }
+            }
         }
     }
 }
 
-/* read subdirectories */
-if (!fs.existsSync(membersDir)) {
-    console.error(`Members directory not found at: ${membersDir}`);
-    process.exit(1);
+// fallback: add any directories in members/ not mentioned in members.txt
+for (const dirName of existingDirs) {
+    if (!processedIds.has(dirName)) {
+        membersList.push({
+            id: dirName,
+            name: dirName,
+        });
+        processedIds.add(dirName);
+    }
 }
-
-const entries = fs.readdirSync(membersDir, { withFileTypes: true });
-const memberDirs = entries
-    .filter((entry) => entry.isDirectory())
-    .map((entry) => entry.name)
-    .filter((name) => !name.startsWith('.'));
-
-/* sort alphabetically */
-memberDirs.sort((a, b) => a.localeCompare(b));
-
-/* build member list */
-const membersList = memberDirs.map((dirName) => {
-    const dirLower = dirName.toLowerCase();
-    const displayName = casingMap.has(dirLower) ? casingMap.get(dirLower) : dirName;
-    return {
-        id: dirLower,
-        name: displayName,
-    };
-});
 
 /* write json file */
 fs.writeFileSync(outputPath, JSON.stringify(membersList, null, 2) + '\n', 'utf-8');
 console.log(`Generated ${outputPath} with ${membersList.length} members:`);
-membersList.forEach((m) => console.log(` - ${m.id} -> ${m.name}`));
+membersList.forEach((m) => {
+    const type = m.isExternal ? `(External: ${m.url})` : '(Internal)';
+    console.log(` - ${m.id} -> ${m.name} ${type}`);
+});

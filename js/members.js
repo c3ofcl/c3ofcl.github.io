@@ -47,12 +47,24 @@ async function fetchMembersTxtFallback() {
             const trimmed = line.trim();
             if (!trimmed || trimmed.startsWith('#')) continue;
 
-            const originalUsername = trimmed.split('/')[0].trim();
-            if (originalUsername) {
+            const parts = trimmed.split(/\s+/);
+            if (parts.length >= 2 && /^https?:\/\//i.test(parts[1])) {
+                const originalUsername = parts[0].trim();
+                const url = parts[1].trim();
                 list.push({
                     id: originalUsername.toLowerCase(),
                     name: originalUsername,
+                    url: url,
+                    isExternal: true,
                 });
+            } else {
+                const originalUsername = trimmed.split('/')[0].trim();
+                if (originalUsername) {
+                    list.push({
+                        id: originalUsername.toLowerCase(),
+                        name: originalUsername,
+                    });
+                }
             }
         }
         return list;
@@ -74,19 +86,55 @@ function renderMembers(container, members) {
 
     members.forEach((member) => {
         const card = document.createElement('a');
-        card.href = `/members/${encodeURIComponent(member.id)}/`;
+        if (member.isExternal && member.url) {
+            card.href = member.url;
+            card.target = '_blank';
+            card.rel = 'noopener noreferrer';
+        } else {
+            card.href = member.url || `/members/${encodeURIComponent(member.id)}/`;
+        }
         card.className = 'member-card';
         card.id = `member-${member.id}`;
 
         const initial = (member.name && member.name.charAt(0)) ? member.name.charAt(0).toUpperCase() : 'M';
 
-        card.innerHTML = `
-            <div class="member-avatar" aria-hidden="true">${escapeHtml(initial)}</div>
-            <div class="member-info">
-                <h2 class="member-name">${escapeHtml(member.name)}</h2>
-                <span class="member-label">Portfolio <span class="member-arrow" aria-hidden="true">&rarr;</span></span>
-            </div>
+        const avatar = document.createElement('div');
+        avatar.className = 'member-avatar';
+        avatar.setAttribute('aria-hidden', 'true');
+
+        const initialSpan = document.createElement('span');
+        initialSpan.className = 'member-avatar-initial';
+        initialSpan.textContent = initial;
+        avatar.appendChild(initialSpan);
+
+        const username = member.name || member.id;
+        if (username) {
+            const img = document.createElement('img');
+            img.className = 'member-avatar-img';
+            img.alt = '';
+            img.loading = 'lazy';
+            img.decoding = 'async';
+            img.onload = () => {
+                initialSpan.style.display = 'none';
+                avatar.classList.add('has-image');
+            };
+            img.onerror = () => {
+                img.remove();
+                avatar.classList.remove('has-image');
+            };
+            img.src = `https://github.com/${encodeURIComponent(username)}.png?size=96`;
+            avatar.appendChild(img);
+        }
+
+        const info = document.createElement('div');
+        info.className = 'member-info';
+        info.innerHTML = `
+            <h2 class="member-name">${escapeHtml(member.name)}</h2>
+            <span class="member-label">Portfolio <span class="member-arrow" aria-hidden="true">&rarr;</span></span>
         `;
+
+        card.appendChild(avatar);
+        card.appendChild(info);
 
         fragment.appendChild(card);
     });
