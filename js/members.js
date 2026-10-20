@@ -85,8 +85,13 @@ function renderMembers(container, members) {
     const fragment = document.createDocumentFragment();
 
     members.forEach((member) => {
+        const isExternal = Boolean(
+            member.isExternal ||
+            (member.url && /^https?:\/\//i.test(member.url) && !member.url.includes('c3ofcl.github.io'))
+        );
+
         const card = document.createElement('a');
-        if (member.isExternal && member.url) {
+        if (isExternal && member.url) {
             card.href = member.url;
             card.target = '_blank';
             card.rel = 'noopener noreferrer';
@@ -94,6 +99,9 @@ function renderMembers(container, members) {
             card.href = member.url || `/members/${encodeURIComponent(member.id)}/`;
         }
         card.className = 'member-card';
+        if (isExternal) {
+            card.classList.add('is-external');
+        }
         card.id = `member-${member.id}`;
 
         const initial = (member.name && member.name.charAt(0)) ? member.name.charAt(0).toUpperCase() : 'M';
@@ -126,11 +134,15 @@ function renderMembers(container, members) {
             avatar.appendChild(img);
         }
 
+        const actionLabel = isExternal
+            ? 'Portfolio <span class="member-badge-external">外部</span>'
+            : 'Portfolio <span class="member-arrow" aria-hidden="true">&rarr;</span>';
+
         const info = document.createElement('div');
         info.className = 'member-info';
         info.innerHTML = `
             <h2 class="member-name">${escapeHtml(member.name)}</h2>
-            <span class="member-label">Portfolio <span class="member-arrow" aria-hidden="true">&rarr;</span></span>
+            <span class="member-label">${actionLabel}</span>
         `;
 
         card.appendChild(avatar);
