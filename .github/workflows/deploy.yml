@@ -26,23 +26,29 @@ jobs:
 
       - name: Clone member repositories
         run: |
-          while IFS= read -r repo || [ -n "$repo" ]; do
+          while IFS= read -r line || [ -n "$line" ]; do
             # trim whitespace and skip empty lines or comments
-            repo_trimmed=$(echo "$repo" | xargs)
-            [[ -z "$repo_trimmed" || "$repo_trimmed" =~ ^# ]] && continue
+            line_trimmed=$(echo "$line" | xargs)
+            [[ -z "$line_trimmed" || "$line_trimmed" =~ ^# ]] && continue
 
-            username=$(echo "$repo_trimmed" | cut -d'/' -f1)
+            # skip external member portfolios (lines containing http:// or https://)
+            if echo "$line_trimmed" | grep -qE "https?://"; then
+              echo "Skipping clone for external portfolio: $line_trimmed"
+              continue
+            fi
+
+            username=$(echo "$line_trimmed" | cut -d'/' -f1)
             username_lower=$(echo "$username" | tr '[:upper:]' '[:lower:]')
 
-            echo "Cloning $repo_trimmed into members/${username_lower}..."
+            echo "Cloning $line_trimmed into members/${username_lower}..."
             target_dir="members/${username_lower}"
             rm -rf "$target_dir"
 
-            if git clone --depth 1 "https://github.com/${repo_trimmed}.git" "$target_dir"; then
+            if git clone --depth 1 "https://github.com/${line_trimmed}.git" "$target_dir"; then
               rm -rf "${target_dir}/.git"
-              echo "Successfully cloned $repo_trimmed into $target_dir."
+              echo "Successfully cloned $line_trimmed into $target_dir."
             else
-              echo "::warning::Failed to clone $repo_trimmed, skipping."
+              echo "::warning::Failed to clone $line_trimmed, skipping."
               rm -rf "$target_dir"
             fi
           done < members.txt
@@ -50,8 +56,11 @@ jobs:
       - name: Generate Members List
         run: node scripts/generate-members.cjs
 
-      - name: Ensure .nojekyll exists
-        run: touch .nojekyll
+      - name: Prepare Deployment Artifacts
+        run: |
+          # remove .gitignore so that generated files (e.g. members/members.json) are deployed to gh-pages
+          rm -f .gitignore
+          touch .nojekyll
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4

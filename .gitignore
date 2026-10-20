@@ -1,0 +1,6 @@
+members/members.json
+
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
