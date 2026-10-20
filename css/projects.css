@@ -1,0 +1,222 @@
+/* header */
+.projects-header {
+    margin-bottom: 2rem;
+    text-align: left;
+    padding-left: 0.375rem;
+}
+
+@media (min-width: 768px) {
+    .projects-header {
+        margin-bottom: 2.5rem;
+    }
+}
+
+.projects-title {
+    font-size: var(--font-size-600);
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+}
+
+.projects-description {
+    font-size: var(--font-size-300);
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 640px;
+}
+
+/* grid */
+.projects-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+/* card */
+.project-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 190px;
+    padding: 1.25rem;
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 0.75rem;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-card);
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: filter var(--transition-fast),
+        box-shadow var(--transition-fast),
+        transform var(--transition-fast);
+    overflow: hidden;
+}
+
+@media (min-width: 768px) {
+    .project-card {
+        min-height: 200px;
+        padding: 1.5rem;
+    }
+}
+
+/* hover and active */
+.project-card:hover {
+    filter: var(--hover-darken);
+    box-shadow: var(--shadow-md);
+}
+
+.project-card:active {
+    filter: var(--active-darken);
+    transform: translateY(1px);
+}
+
+.project-top {
+    width: 100%;
+    min-width: 0;
+}
+
+/* title */
+.project-title {
+    font-size: var(--font-size-400);
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* meta and status */
+.project-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.875rem;
+}
+
+.project-year {
+    font-size: var(--font-size-100);
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 0.02em;
+}
+
+.project-badge-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    line-height: 1;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    letter-spacing: 0.02em;
+    border: 1px solid transparent;
+    margin-left: auto;
+}
+
+.project-badge-status::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: currentColor;
+}
+
+/* in-progress status */
+.project-card.status-in-progress .project-badge-status,
+.project-card.status-inprogress .project-badge-status {
+    background-color: rgba(var(--color-primary-rgb), 0.1);
+    color: var(--color-primary);
+    border-color: rgba(var(--color-primary-rgb), 0.25);
+}
+
+/* paused status */
+.project-card.status-paused .project-badge-status {
+    background-color: color-mix(in srgb, var(--text-primary) 6%, transparent);
+    color: var(--text-secondary);
+    border-color: color-mix(in srgb, var(--text-primary) 14%, transparent);
+}
+
+/* description */
+.project-description {
+    font-size: var(--font-size-200);
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+}
+
+/* footer */
+.project-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-top: 0.75rem;
+    border-top: 1px solid color-mix(in srgb, var(--card-border) 60%, transparent);
+}
+
+.project-action-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: var(--font-size-100);
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.project-arrow {
+    display: inline-block;
+}
+
+.project-badge-external {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    line-height: 1;
+    padding: 0.2rem 0.45rem;
+    border-radius: 0.25rem;
+    background-color: color-mix(in srgb, var(--text-primary) 8%, transparent);
+    color: color-mix(in srgb, var(--text-primary) 70%, transparent);
+    border: 1px solid color-mix(in srgb, var(--text-primary) 12%, transparent);
+    letter-spacing: 0.02em;
+}
+
+/* status messages */
+.projects-empty,
+.projects-error,
+.projects-noscript {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem 1.5rem;
+    color: var(--text-secondary);
+    font-size: var(--font-size-300);
+    background-color: var(--card-bg);
+    border: 1px dashed var(--card-border);
+    border-radius: 0.75rem;
+}

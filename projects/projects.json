@@ -1,0 +1,65 @@
+[
+  {
+    "id": "c3-web",
+    "title": "C3 公式Webサイト",
+    "description": "今、ご覧になっているこのサイトのことです。メンバーのオンライン活動の中心拠点として開発・運用してきました。デザインから掲載コンテンツまで、全て内製のオリジナルです。",
+    "status": "in-progress",
+    "statusLabel": "進行中",
+    "year": "2026",
+    "url": "https://c3ofcl.github.io/",
+    "isExternal": false
+  },
+  {
+    "id": "temp-1",
+    "title": "仮プロジェクト1",
+    "description": "中央大学市ヶ谷田町キャンパスの複雑なフロア構成を直感的に把握できる、ブラウザ完結型のインタラクティブ3Dフロアガイド。",
+    "status": "in-progress",
+    "statusLabel": "進行中",
+    "year": [
+      "2025",
+      "2026"
+    ],
+    "url": "#",
+    "isExternal": true
+  },
+  {
+    "id": "temp-2",
+    "title": "仮プロジェクト2",
+    "description": "数学的アルゴリズムとGLSLシェーダー、p5.jsを用いたインタラクティブな映像・コード表現のオンライン合同展示プロジェクト。",
+    "status": "paused",
+    "statusLabel": "休止中",
+    "year": "2025",
+    "url": "#",
+    "isExternal": false
+  },
+  {
+    "id": "temp-3",
+    "title": "仮プロジェクト3",
+    "description": "チームビルディングからリアルタイムな投票・得点集計、作品プレゼンテーションをスムーズに支援するオールインワンWebツール。",
+    "status": "paused",
+    "statusLabel": "休止中",
+    "year": "2025",
+    "url": "#",
+    "isExternal": false
+  },
+  {
+    "id": "temp-4",
+    "title": "仮プロジェクト4",
+    "description": "レトロなドット絵アートとローファイ/シンセサウンドで綴る、ブラウザで気軽に遊べる横スクロールアクションゲーム。",
+    "status": "in-progress",
+    "statusLabel": "進行中",
+    "year": "2024",
+    "url": "#",
+    "isExternal": false
+  },
+  {
+    "id": "temp-5",
+    "title": "仮プロジェクト5",
+    "description": "サークル内のLT会スケジュール管理、勉強会の進捗トラッキング、定期リマインダーを担う自動化アシスタントBot。",
+    "status": "in-progress",
+    "statusLabel": "進行中",
+    "year": "2024",
+    "url": "#",
+    "isExternal": false
+  }
+]

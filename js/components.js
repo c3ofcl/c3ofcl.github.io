@@ -19,8 +19,8 @@ class SiteHeader extends HTMLElement {
                 </button>
 
                 <ul class="site-menu">
-                    <li><a href="/" class="site-menu-link">ホーム</a></li>
                     <li><a href="/members/" class="site-menu-link">メンバー</a></li>
+                    <li><a href="/projects/" class="site-menu-link">プロジェクト</a></li>
                 </ul>
             </nav>
         </header>
@@ -71,7 +71,7 @@ class SiteFooter extends HTMLElement {
         this.innerHTML = `
         <footer class="site-footer">
             <p class="site-footer-text">
-                &copy;2026 C3 | Creative Computing Club.
+                &copy;2025-2026 C3 | Creative Computing Club.
                 <br />All Rights Reserved.
             </p>
         </footer>
