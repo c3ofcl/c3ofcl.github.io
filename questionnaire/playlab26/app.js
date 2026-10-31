@@ -227,6 +227,7 @@ const BOOTHS = [
     {
         id: 'duck-rooms',
         order: 1,
+        boothNumber: 2,
         title: 'アヒルルームズ（Touchdesignerデモ）',
         category: 'インタラクティブ作品 / 体感アート',
         overview:
@@ -258,6 +259,7 @@ const BOOTHS = [
     {
         id: 'misaki-krie',
         order: 2,
+        boothNumber: 3,
         title: '三咲クリエのボイスチャット（AIチャットボットと話そう！）',
         category: '3Dアバター / AI音声会話',
         overview:
@@ -289,6 +291,7 @@ const BOOTHS = [
     {
         id: 'clunky-tanky',
         order: 3,
+        boothNumber: 4,
         title: 'CLUNKY TANKY（Joy-Conで遊べる戦車ゲーム）',
         category: '3Dゲーム / Unity & Joy-Con開発解説',
         overview:
@@ -320,6 +323,7 @@ const BOOTHS = [
     {
         id: 'ai-postcard',
         order: 4,
+        boothNumber: 5,
         title: 'AIポストカード制作体験',
         category: '生成AI体験 / オリジナルグッズ制作',
         overview:
@@ -351,6 +355,7 @@ const BOOTHS = [
     {
         id: 'ai-video-editor',
         order: 5,
+        boothNumber: 6,
         title: 'AI搭載動画編集アプリ',
         category: 'クリエイティブWebアプリ / 生成AI統合',
         overview:
@@ -382,6 +387,7 @@ const BOOTHS = [
     {
         id: 'music-collab',
         order: 6,
+        boothNumber: 7,
         title: '音楽共同製作アプリ',
         category: 'リアルタイム通信Webアプリ / 音楽制作',
         overview:
@@ -413,6 +419,7 @@ const BOOTHS = [
     {
         id: 'web-showcase',
         order: 7,
+        boothNumber: 8,
         title: 'Webアプリケーション紹介展示',
         category: 'Webサイト制作 / 共同開発プロジェクト展示',
         overview:
@@ -693,7 +700,7 @@ function renderBooths(data) {
     if (state.sortMode === 'recommend') {
         list.sort((a, b) => a.rank - b.rank);
     } else {
-        list.sort((a, b) => a.order - b.order);
+        list.sort((a, b) => a.boothNumber - b.boothNumber);
     }
 
     const fragment = document.createDocumentFragment();
@@ -708,7 +715,7 @@ function renderBooths(data) {
         card.innerHTML = `
             <div class="booth-card-header">
                 <h3 class="booth-title">
-                    <span class="booth-match-badge" aria-label="おすすめ順位：${booth.rank}">${booth.rank}</span>
+                    <span class="booth-match-badge" aria-label="ブース${booth.boothNumber}">${booth.boothNumber}</span>
                     <span class="booth-title-text">${escapeHtml(booth.title)}</span>
                 </h3>
                 <p class="booth-overview">${escapeHtml(booth.overview)}</p>
