@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C3 PlayLabの楽しみ方診断 - C3 | Creative Computing Club</title>
+    <meta name="description"
+        content="iTLFest.2026（7階 702教室）C3展示ブースを120%楽しむためのアンケート診断アプリ。全6問に答えると、あなたにぴったりの全企画の楽しみ方ガイドが表示されます。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="./style.css">
+    <script src="/js/components.js" defer></script>
+    <script src="./app.js" defer></script>
+</head>
+
+<body>
+    <div class="site-container playlab-container">
+        <main class="playlab-main">
+            <!-- hero banner -->
+            <header class="playlab-hero mesh-bg">
+                <div class="playlab-hero-brand">
+                    <img src="/images/playlab_logo_text_white.svg" alt="C3 PlayLab" class="playlab-logo">
+                </div>
+                <div class="playlab-hero-body">
+                    <h1 class="playlab-hero-title">楽しみ方診断</h1>
+                    <p class="playlab-hero-subtitle">6つの質問で、あなたにぴったりの各企画の楽しみ方をご案内します。</p>
+                </div>
+            </header>
+
+            <!-- screen 1 intro -->
+            <section id="screen-intro" class="playlab-panel is-active" aria-labelledby="intro-heading">
+                <div class="intro-card">
+                    <div class="intro-content">
+                        <h2 id="intro-heading" class="section-title">7つの展示企画を、あなたの視点で。</h2>
+                        <p class="section-lead">
+                            702教室のC3ブースでは全部で7企画を展示中！
+                        </p>
+                        <ul class="intro-list">
+                            <li>全6問・4択の簡単なアンケート（所要時間：約30秒）</li>
+                            <li>あなたの興味やスタイルに合わせた、おすすめの楽しみ方を判定！</li>
+                            <li>全7企画それぞれで、どんな楽しみ方をすれば面白いかを個別にガイドします。</li>
+                        </ul>
+                    </div>
+                    <div class="intro-actions">
+                        <button type="button" id="btn-start" class="btn btn-primary btn-lg">
+                            診断をはじめる
+                            <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- screen 2 quiz -->
+            <section id="screen-quiz" class="playlab-panel" aria-live="polite" hidden>
+                <div class="quiz-card">
+                    <div class="quiz-body">
+                        <h2 id="quiz-question-text" class="quiz-question-title">質問テキストがここに入ります</h2>
+                        <div id="quiz-options" class="quiz-options" role="radiogroup"
+                            aria-labelledby="quiz-question-text">
+                            <!-- options rendered by js -->
+                        </div>
+                    </div>
+
+                    <div class="quiz-footer">
+                        <button type="button" id="btn-prev" class="btn btn-secondary quiz-prev-btn">
+                            <span aria-hidden="true">&larr;</span> 前の質問へ
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- screen 3 result -->
+            <section id="screen-result" class="playlab-panel" aria-live="polite" hidden>
+                <!-- type summary card -->
+                <div class="result-summary-card">
+                    <div class="result-summary-header">
+                        <span class="result-eyebrow">あなたのタイプは…</span>
+                        <h2 id="result-type-title" class="result-type-title">タイプ名</h2>
+                    </div>
+                    <p id="result-type-desc" class="result-type-desc">タイプの詳細説明</p>
+                </div>
+
+                <!-- connect and follow card -->
+                <div class="result-connect-card" id="result-connect-card">
+                    <div class="connect-header">
+                        <h3 class="connect-title">C3の最新情報・公式SNS</h3>
+                        <p class="connect-desc">サークルの日々の活動やイベント情報、制作物などはLinktreeからご覧いただけます。ぜひフォローしてください！</p>
+                    </div>
+                    <div class="connect-actions">
+                        <a href="https://linktr.ee/c3ofcl" target="_blank" rel="noopener noreferrer" class="btn btn-connect btn-linktree">
+                            <span>公式リンク集（Linktree）を見る</span>
+                            <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+                        </a>
+                    </div>
+
+                    <!-- itl student exclusive section -->
+                    <div class="connect-itl-section" id="connect-itl-section" hidden>
+                        <div class="connect-itl-header">
+                            <span class="connect-itl-badge">iTL生向け</span>
+                            <h4 class="connect-itl-title">C3 LINE公式アカウント</h4>
+                        </div>
+                        <p class="connect-itl-desc">新歓情報やサークルの学習会、イベント案内を定期配信しています。C3での活動に興味があるiTL生は、ぜひ友だち追加してください！</p>
+                        <div class="connect-itl-actions">
+                            <a href="https://line.me/R/ti/p/@112ebwax" target="_blank" rel="noopener noreferrer" class="btn btn-connect btn-line">
+                                <span>LINE公式アカウントを友だち追加</span>
+                                <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- all 7 booths guide -->
+                <div class="booths-guide-section">
+                    <div class="booths-guide-header">
+                        <div>
+                            <h2 class="booths-guide-title">全7企画・あなた向けの楽しみ方ガイド</h2>
+                            <p class="booths-guide-subtitle">回答結果をもとに、すべての展示での楽しみ方をまとめました。気になる企画からチェックしてみましょう！
+                            </p>
+                        </div>
+                        <div class="booths-filter-bar" role="group" aria-label="表示順の切り替え">
+                            <button type="button" class="filter-chip is-active" data-sort="recommend">おすすめ順</button>
+                            <button type="button" class="filter-chip" data-sort="default">ブース順</button>
+                        </div>
+                    </div>
+
+                    <div id="booths-grid" class="booths-grid">
+                        <!-- 7 booth cards rendered by js -->
+                    </div>
+                </div>
+
+                <!-- retry footer actions -->
+                <div class="result-actions">
+                    <button type="button" id="btn-retry" class="btn btn-secondary btn-lg">
+                        もう一度診断する
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <!-- common footer -->
+        <site-footer></site-footer>
+    </div>
+</body>
+
+</html>
