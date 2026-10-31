@@ -166,6 +166,21 @@
     display: inline-block;
 }
 
+.member-badge-external {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    line-height: 1;
+    padding: 0.2rem 0.45rem;
+    border-radius: 0.25rem;
+    background-color: color-mix(in srgb, var(--text-primary) 8%, transparent);
+    color: color-mix(in srgb, var(--text-primary) 70%, transparent);
+    border: 1px solid color-mix(in srgb, var(--text-primary) 12%, transparent);
+    letter-spacing: 0.02em;
+}
+
 /* status messages */
 .members-empty,
 .members-error,
