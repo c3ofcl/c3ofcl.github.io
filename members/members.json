@@ -14,6 +14,12 @@
     "name": "KidoCat"
   },
   {
+    "id": "wash",
+    "name": "wash",
+    "url": "https://v76nl.github.io/",
+    "isExternal": true
+  },
+  {
     "id": "kariwacatie",
     "name": "KAriwaCatie"
   },
