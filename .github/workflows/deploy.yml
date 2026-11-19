@@ -26,32 +26,20 @@ jobs:
 
       - name: Clone member repositories
         run: |
-          while IFS= read -r line || [ -n "$line" ]; do
-            # trim whitespace and skip empty lines or comments
-            line_trimmed=$(echo "$line" | xargs)
-            [[ -z "$line_trimmed" || "$line_trimmed" =~ ^# ]] && continue
-
-            # skip external member portfolios (lines containing http:// or https://)
-            if echo "$line_trimmed" | grep -qE "https?://"; then
-              echo "Skipping clone for external portfolio: $line_trimmed"
-              continue
-            fi
-
-            username=$(echo "$line_trimmed" | cut -d'/' -f1)
-            username_lower=$(echo "$username" | tr '[:upper:]' '[:lower:]')
-
-            echo "Cloning $line_trimmed into members/${username_lower}..."
-            target_dir="members/${username_lower}"
+          node scripts/generate-members.cjs --list-repos | while read -r id repo; do
+            [ -z "$id" ] || [ -z "$repo" ] && continue
+            echo "Cloning $repo into members/${id}..."
+            target_dir="members/${id}"
             rm -rf "$target_dir"
 
-            if git clone --depth 1 "https://github.com/${line_trimmed}.git" "$target_dir"; then
+            if git clone --depth 1 "https://github.com/${repo}.git" "$target_dir"; then
               rm -rf "${target_dir}/.git"
-              echo "Successfully cloned $line_trimmed into $target_dir."
+              echo "Successfully cloned $repo into $target_dir."
             else
-              echo "::warning::Failed to clone $line_trimmed, skipping."
+              echo "::warning::Failed to clone $repo, skipping."
               rm -rf "$target_dir"
             fi
-          done < members.txt
+          done
 
       - name: Generate Members List
         run: node scripts/generate-members.cjs
