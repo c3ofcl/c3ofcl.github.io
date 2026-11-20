@@ -10,13 +10,23 @@
     "isExternal": false
   },
   {
+    "id": "ai-composer",
+    "title": "ホログラム投影装置「PHI」",
+    "description": "その場に浮かんでいるかのような立体的表現ができる、独自開発の映像投影装置、80インチ・超大型の「PHI」と卓上サイズの「PHI mini」です。C3制作のアプリや他団体とのコラボレーションで新体験をお届けしています。",
+    "status": "in-progress",
+    "statusLabel": "進行中",
+    "year": ["2025", "2026"],
+    "url": "https://www.youtube.com/shorts/hl5uTpIOJ44",
+    "isExternal": false
+  },
+  {
     "id": "ai-postcard",
     "title": "AIポストカード制作体験",
     "description": "AIの力で、世界に一枚だけのオリジナルポストカードが作れる体験コーナーです。豊富な選択肢から好みの絵柄を選び、ノートPCで直感的に操作するだけで完成します。お気に入りの一枚は、ぜひ思い出としてお持ち帰りください。",
     "status": "in-progress",
     "statusLabel": "進行中",
     "year": ["2025", "2026"],
-    "url": "#",
+    "url": "",
     "isExternal": false
   },
   {
@@ -26,18 +36,18 @@
     "status": "in-progress",
     "statusLabel": "進行中",
     "year": ["2025", "2026"],
-    "url": "#",
-    "isExternal": false
+    "url": "https://townlens.pages.dev/",
+    "isExternal": true
   },
   {
     "id": "fespo",
     "title": "学祭企画検索「フェスぽ」",
-    "description": "iTLFest.実行委員会とC3がタッグを組んで共同開発した、学祭企画検索サイトです。なんとWebプログラミング未経験からC3の学習会で腕を磨いた1年生も、開発メンバーとして大活躍しました。学祭をもっと楽しむための頼れる相棒です。",
+    "description": "中央大学iTLFest.実行委員会とC3がタッグを組み共同開発した、学祭企画検索サイトです。なんと、Webプログラミング未経験からC3の学習会で腕を磨いた1年生も、開発メンバーとして大活躍しました。学祭をもっと楽しむための頼れる相棒です。",
     "status": "in-progress",
     "statusLabel": "進行中",
     "year": "2026",
-    "url": "#",
-    "isExternal": false
+    "url": "https://gakusai-search.github.io/",
+    "isExternal": true
   },
   {
     "id": "duck-rooms",
@@ -46,47 +56,57 @@
     "status": "in-progress",
     "statusLabel": "進行中",
     "year": "2026",
-    "url": "#",
+    "url": "",
     "isExternal": false
   },
   {
     "id": "misaki-chatbot",
     "title": "ホログラム × AIボイスチャット",
-    "description": "C3の3Dアバター「三咲クリエ」と、まるでそこにいるかのように見えるホログラム装置でおしゃべりしましょう。表情やポージングも交えながら、かわいく元気に受け答えしてくれます。ネット検索での調べものもお手のものですが、時々うっかり間違えるお茶目な一面も。",
+    "description": "C3の3Dアバター「三咲クリエ」と、まるでそこにいるかのように見えるホログラム装置「PHI mini」でおしゃべりしましょう。表情やポージングも交えながら、かわいく元気に受け答えしてくれます。ネット検索での調べものもお手のものですが、時々うっかり間違えるお茶目な一面も。",
     "status": "in-progress",
     "statusLabel": "進行中",
     "year": "2026",
-    "url": "#",
+    "url": "",
     "isExternal": false
   },
   {
     "id": "clunky-tanky",
     "title": "CLUNKY TANKY",
-    "description": "Nintendo SwitchのJoy-Conで操縦する、Unity製の3D戦車シューターです。右手の動きと視界・照準が連動する体感操作で、走攻守さまざまな戦術ややり込み要素を楽しめます。ゲームの作り方解説もあわせてお届けしています。",
+    "description": "Nintendo SwitchのJoy-Conで操縦する、Unity製の3D戦車シューターです。右手の動きと視界・照準が連動する体感操作で、走攻守さまざまな戦術ややり込み要素を楽しめます。ゲームの作り方解説もあわせてお届けします。",
     "status": "in-progress",
     "statusLabel": "進行中",
     "year": "2026",
-    "url": "#",
+    "url": "",
     "isExternal": false
   },
   {
     "id": "c3media-video",
-    "title": "AI 動画編集アプリ",
+    "title": "AI動画編集アプリ",
     "description": "動画制作がアプリ内で完結する、クリエイティブなWeb動画編集ツールです。動画や画像をAI生成して動画内でつくうことができる画期的なアプリとなっています。加えて、必要な機能を厳選し、カット編集やテロップ入れが誰でも迷わずサクッと行えるシンプルさにこだわりました。",
     "status": "in-progress",
     "statusLabel": "進行中",
     "year": "2026",
-    "url": "#",
-    "isExternal": false
+    "url": "https://github.com/c3ofcl/c3media-video-py",
+    "isExternal": true
   },
   {
     "id": "c3media-daw",
     "title": "音楽共同製作アプリ",
-    "description": "ダウンロード不要で、複数人がリアルタイムに音を紡げる独自開発のWebアプリです。誰か一人が立ち上げるだけで、すぐさまみんなで一緒に楽曲づくりがスタートできます。音楽初心者でも直感的に楽しめる、手軽さと遊び心が詰まった一作です。",
+    "description": "ダウンロード不要で、複数人がリアルタイムに音を紡げる独自開発のWebアプリです。誰か一人が立ち上げるだけで、すぐさまみんなで一緒に楽曲づくりがスタートできます。音楽初心者でも直感的に楽しめる、手軽さと遊び心が詰まったアプリです。",
     "status": "in-progress",
     "statusLabel": "進行中",
     "year": "2026",
-    "url": "#",
-    "isExternal": false
+    "url": "https://github.com/c3ofcl/c3media-daw-py",
+    "isExternal": true
+  },
+  {
+    "id": "ai-composer",
+    "title": "AI作曲 powered by C3",
+    "description": "吹き込まれた声から話している内容を認識して感情を読み取り、そこから歌詞とメロディを自動で生成します。QRコードを読み取って作った音楽を持ち帰ることもできます。",
+    "status": "paused",
+    "statusLabel": "休止中",
+    "year": "2025",
+    "url": "https://www.youtube.com/shorts/hl5uTpIOJ44",
+    "isExternal": true
   }
 ]

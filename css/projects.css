@@ -188,6 +188,26 @@
     font-weight: 500;
 }
 
+.project-action-label.is-disabled {
+    color: color-mix(in srgb, var(--text-secondary) 45%, transparent);
+    opacity: 0.6;
+    cursor: default;
+}
+
+.project-card.has-no-url {
+    cursor: default;
+}
+
+.project-card.has-no-url:hover {
+    filter: none;
+    box-shadow: var(--shadow-card);
+}
+
+.project-card.has-no-url:active {
+    filter: none;
+    transform: none;
+}
+
 .project-arrow {
     display: inline-block;
 }
