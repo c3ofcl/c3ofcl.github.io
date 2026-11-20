@@ -41,9 +41,13 @@ function renderProjects(container, projects) {
     const fragment = document.createDocumentFragment();
 
     projects.forEach((project) => {
+        const urlStr = typeof project.url === 'string' ? project.url.trim() : '';
+        const hasUrl = Boolean(urlStr);
+        const isHash = urlStr === '#';
+
         const isExternal = Boolean(
             project.isExternal ||
-            (project.url && /^https?:\/\//i.test(project.url) && !project.url.includes('c3ofcl.github.io'))
+            (hasUrl && /^https?:\/\//i.test(urlStr) && !urlStr.includes('c3ofcl.github.io'))
         );
 
         const isPaused = project.status === 'paused' || project.statusLabel === '休止中';
@@ -57,24 +61,36 @@ function renderProjects(container, projects) {
         }
         card.id = `project-${project.id || 'item'}`;
 
-        if (project.url && project.url !== '#') {
-            card.href = project.url;
-            if (isExternal) {
-                card.target = '_blank';
-                card.rel = 'noopener noreferrer';
-            }
-        } else {
+        let actionLabel = '';
+        let isActionDisabled = false;
+
+        if (!hasUrl) {
+            isActionDisabled = true;
+            card.classList.add('has-no-url');
+            card.href = '#';
+            card.setAttribute('aria-disabled', 'true');
+            card.addEventListener('click', (e) => {
+                e.preventDefault();
+            });
+            actionLabel = '詳細を見る';
+        } else if (isHash) {
             card.href = '#';
             card.addEventListener('click', (e) => {
                 e.preventDefault();
             });
+            actionLabel = '詳細を見る <span class="project-arrow" aria-hidden="true">&rarr;</span>';
+        } else {
+            card.href = project.url;
+            if (isExternal) {
+                card.target = '_blank';
+                card.rel = 'noopener noreferrer';
+                actionLabel = '詳細を見る <span class="project-badge-external">外部</span>';
+            } else {
+                actionLabel = '詳細を見る <span class="project-arrow" aria-hidden="true">&rarr;</span>';
+            }
         }
 
         const yearText = formatProjectYear(project.year);
-
-        const actionLabel = isExternal
-            ? '詳細を見る <span class="project-badge-external">外部</span>'
-            : '詳細を見る <span class="project-arrow" aria-hidden="true">&rarr;</span>';
 
         card.innerHTML = `
             <div class="project-top">
@@ -86,7 +102,7 @@ function renderProjects(container, projects) {
                 <p class="project-description">${escapeHtml(project.description || '')}</p>
             </div>
             <div class="project-footer">
-                <span class="project-action-label">${actionLabel}</span>
+                <span class="project-action-label${isActionDisabled ? ' is-disabled' : ''}">${actionLabel}</span>
             </div>
         `;
 
